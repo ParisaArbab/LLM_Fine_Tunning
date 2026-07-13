@@ -1,6 +1,6 @@
 # LLM Fine-Tuning Studio
 
-A production-style Generative AI project that fine-tunes an open-source large language model with LoRA or QLoRA, evaluates the adapted model, and serves it through a FastAPI application.
+This project is a production-style LLM fine-tuning platform using Hugging Face Transformers, TRL, PEFT, LoRA/QLoRA, FastAPI, and Docker. Developed configurable instruction-tuning pipelines, automated evaluation, adapter-based inference, REST APIs, testing, and CI workflows for efficient deployment and experimentation.
 
 This project is designed to demonstrate practical skills in:
 
