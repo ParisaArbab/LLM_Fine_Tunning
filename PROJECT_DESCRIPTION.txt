@@ -1,0 +1,1 @@
+A production-style Generative AI project for supervised fine-tuning of open-source LLMs with LoRA and QLoRA. It includes instruction-data validation, configurable training, adapter evaluation, interactive inference, a FastAPI service, Docker deployment, automated tests, and GitHub Actions CI.

@@ -1,0 +1,16 @@
+torch>=2.2
+transformers>=4.45
+datasets>=2.20
+peft>=0.12
+trl>=0.11
+accelerate>=0.33
+bitsandbytes>=0.43; platform_system != "Darwin"
+pyyaml>=6.0
+pydantic>=2.7
+pydantic-settings>=2.2
+fastapi>=0.111
+uvicorn[standard]>=0.30
+numpy>=1.26
+scikit-learn>=1.4
+tqdm>=4.66
+pytest>=8.2
