@@ -2,7 +2,7 @@
 
 This project is a production-style LLM fine-tuning platform using Hugging Face Transformers, TRL, PEFT, LoRA/QLoRA, FastAPI, and Docker. Developed configurable instruction-tuning pipelines, automated evaluation, adapter-based inference, REST APIs, testing, and CI workflows for efficient deployment and experimentation.
 
-This project is designed to demonstrate practical skills in:
+project skills include:
 
 - Generative AI and large language models
 - Supervised fine-tuning
