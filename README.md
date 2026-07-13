@@ -2,7 +2,7 @@
 
 A production-style Generative AI project that fine-tunes an open-source large language model with LoRA or QLoRA, evaluates the adapted model, and serves it through a FastAPI application.
 
-This repository is designed to demonstrate practical AI engineering skills in:
+This project is designed to demonstrate practical skills in:
 
 - Generative AI and large language models
 - Supervised fine-tuning
@@ -304,9 +304,7 @@ docker run --rm -p 8000:8000 \
 pytest
 ```
 
-## Suggested Resume Description
 
-Built a production-style LLM fine-tuning platform using Hugging Face Transformers, TRL, PEFT, LoRA/QLoRA, and FastAPI. Created instruction-data pipelines, configurable supervised fine-tuning, automated evaluation, adapter-based inference, Docker deployment, testing, and CI workflows.
 
 ## Important Notes
 
