@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420">
+<rect width="1200" height="420" fill="#f8fafc"/>
+<style>.box{fill:#fff;stroke:#334155;stroke-width:2;rx:16}.t{font:600 22px Arial;fill:#0f172a;text-anchor:middle}.s{font:16px Arial;fill:#475569;text-anchor:middle}.a{stroke:#2563eb;stroke-width:4;marker-end:url(#m)}</style>
+<defs><marker id="m" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#2563eb"/></marker></defs>
+<rect class="box" x="30" y="135" width="180" height="110"/><text class="t" x="120" y="180">Instruction Data</text><text class="s" x="120" y="212">JSONL examples</text>
+<line class="a" x1="210" y1="190" x2="265" y2="190"/>
+<rect class="box" x="270" y="110" width="200" height="160"/><text class="t" x="370" y="155">Data Pipeline</text><text class="s" x="370" y="190">Validation</text><text class="s" x="370" y="216">Deduplication</text><text class="s" x="370" y="242">Prompt formatting</text>
+<line class="a" x1="470" y1="190" x2="525" y2="190"/>
+<rect class="box" x="530" y="95" width="220" height="190"/><text class="t" x="640" y="140">LLM Fine-Tuning</text><text class="s" x="640" y="178">PyTorch + TRL</text><text class="s" x="640" y="204">LoRA / QLoRA</text><text class="s" x="640" y="230">PEFT adapters</text><text class="s" x="640" y="256">GPU training</text>
+<line class="a" x1="750" y1="190" x2="805" y2="190"/>
+<rect class="box" x="810" y="60" width="170" height="115"/><text class="t" x="895" y="105">Evaluation</text><text class="s" x="895" y="138">Exact match, F1</text>
+<rect class="box" x="810" y="235" width="170" height="115"/><text class="t" x="895" y="280">FastAPI</text><text class="s" x="895" y="313">Inference service</text>
+<line class="a" x1="980" y1="292" x2="1035" y2="292"/>
+<rect class="box" x="1040" y="235" width="130" height="115"/><text class="t" x="1105" y="280">Client</text><text class="s" x="1105" y="313">REST / UI</text>
+</svg>

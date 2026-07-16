@@ -1,191 +1,125 @@
 # LLM Fine-Tuning Studio
 
-This project is a production-style LLM fine-tuning platform using Hugging Face Transformers, TRL, PEFT, LoRA/QLoRA, FastAPI, and Docker. Developed configurable instruction-tuning pipelines, automated evaluation, adapter-based inference, REST APIs, testing, and CI workflows for efficient deployment and experimentation.
+[![Python](https://img.shields.io/badge/Python-3.10%2B-blue)](https://www.python.org/)
+[![PyTorch](https://img.shields.io/badge/PyTorch-2.2%2B-ee4c2c)](https://pytorch.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-REST_API-009688)](https://fastapi.tiangolo.com/)
+[![Docker](https://img.shields.io/badge/Docker-Ready-2496ed)](https://www.docker.com/)
+[![CI](https://github.com/ParisaArbab/llm-finetuning-studio/actions/workflows/ci.yml/badge.svg)](https://github.com/ParisaArbab/llm-finetuning-studio/actions)
+[![License](https://img.shields.io/badge/License-All_Rights_Reserved-lightgrey)](LICENSE)
 
-project skills include:
+## Short Description
 
-- Generative AI and large language models
-- Supervised fine-tuning
-- LoRA and QLoRA parameter-efficient fine-tuning
-- Prompt formatting and instruction datasets
-- Model evaluation and experiment tracking
-- Hugging Face Transformers, PEFT, TRL, and Datasets
-- FastAPI inference services
-- Docker, testing, configuration management, and CI
+LLM Fine-Tuning Studio is a production-style Generative AI system for adapting open-source language models with LoRA and QLoRA. It solves the high cost of full-model fine-tuning by providing a memory-efficient pipeline for data preparation, supervised training, evaluation, and API deployment.
 
-## Project Use Case
+## Features
 
-The example task fine-tunes a language model to act as a software-engineering assistant. The model learns to answer programming questions using clear explanations, structured debugging steps, and safe code suggestions.
+- ✅ Instruction dataset validation and deduplication
+- ✅ LoRA and 4-bit QLoRA fine-tuning
+- ✅ Configurable GPU and lightweight CPU workflows
+- ✅ Prompt formatting for supervised fine-tuning
+- ✅ Exact-match and token-level F1 evaluation
+- ✅ Adapter-based model inference
+- ✅ FastAPI REST API
+- ✅ Docker deployment
+- ✅ Unit tests, coverage, and GitHub Actions CI
+- ✅ Reusable YAML experiment configurations
 
-The included sample dataset is intentionally small so the repository is easy to understand. For a real experiment, replace it with a larger domain dataset.
+## Architecture Diagram
 
-## Architecture
+![LLM Fine-Tuning Studio architecture](docs/assets/architecture.svg)
 
-```text
-Raw JSONL data
-      |
-      v
-Validation and prompt formatting
-      |
-      v
-LoRA or QLoRA supervised fine-tuning
-      |
-      v
-Adapter checkpoint + tokenizer
-      |
-      +-------------------+
-      |                   |
-      v                   v
-Evaluation pipeline    FastAPI inference service
-```
+## Tech Stack
 
-## Main Features
+| Area | Technologies |
+|---|---|
+| Language | Python |
+| Deep Learning | PyTorch |
+| LLM Framework | Hugging Face Transformers |
+| Fine-Tuning | PEFT, LoRA, QLoRA, TRL |
+| Data | Hugging Face Datasets, JSONL |
+| API | FastAPI, Uvicorn, Pydantic |
+| Deployment | Docker |
+| Quality | Pytest, pytest-cov, GitHub Actions |
 
-1. **Dataset validation**
-   - Checks required fields
-   - Removes empty and duplicate examples
-   - Produces train and validation splits
+## Skills Demonstrated ⭐
 
-2. **Prompt construction**
-   - Uses instruction, context, and response fields
-   - Supports chat-template formatting when available
+- PyTorch
+- Hugging Face Transformers
+- PEFT
+- LoRA and QLoRA
+- TRL supervised fine-tuning
+- Deep learning
+- Model fine-tuning
+- Prompt engineering
+- LLM evaluation
+- GPU training and quantization
+- FastAPI and REST APIs
+- Docker
+- Unit testing and coverage
+- CI/CD
+- Python software engineering
+- Configuration management
 
-3. **Fine-tuning**
-   - LoRA or 4-bit QLoRA
-   - Gradient accumulation
-   - Mixed precision
-   - Gradient checkpointing
-   - Configurable target modules
-   - Checkpoint saving and experiment metadata
-
-4. **Evaluation**
-   - Validation loss and perplexity
-   - Exact-match and token-overlap metrics
-   - Before-and-after generation comparison
-   - JSON report generation
-
-5. **Serving**
-   - FastAPI REST API
-   - Health endpoint
-   - Text-generation endpoint
-   - Configurable model and adapter paths
-
-6. **Engineering quality**
-   - Type hints
-   - Logging
-   - Unit tests
-   - Docker
-   - GitHub Actions
-   - Environment-based settings
-
-## Repository Structure
+## Project Structure
 
 ```text
 llm-finetuning-studio/
-├── app/
-│   ├── main.py
-│   ├── model_service.py
-│   └── schemas.py
-├── configs/
-│   ├── train_cpu_demo.yaml
-│   └── train_qlora.yaml
+├── app/                    # FastAPI inference application
+├── configs/                # CPU and QLoRA experiment settings
 ├── data/
-│   ├── raw/
-│   │   └── sample_instructions.jsonl
-│   └── processed/
-├── scripts/
-│   ├── prepare_data.py
-│   ├── train.py
-│   ├── evaluate.py
-│   └── chat.py
-├── src/
-│   └── llm_finetuning/
-│       ├── config.py
-│       ├── data.py
-│       ├── evaluation.py
-│       ├── modeling.py
-│       └── prompts.py
-├── tests/
-│   ├── test_data.py
-│   └── test_prompts.py
-├── .github/workflows/ci.yml
+│   ├── raw/                # Source instruction dataset
+│   └── processed/          # Generated train/validation splits
+├── docs/
+│   └── assets/             # Architecture and example screenshots
+├── scripts/                # Prepare, train, evaluate, and chat commands
+├── src/llm_finetuning/     # Reusable Python package
+├── tests/                  # Unit tests
+├── .github/workflows/      # CI pipeline
 ├── Dockerfile
+├── LICENSE
 ├── Makefile
 ├── pyproject.toml
 └── requirements.txt
 ```
 
-## Quick Start
-
-### 1. Create a virtual environment
+## Installation
 
 ```bash
+git clone https://github.com/ParisaArbab/llm-finetuning-studio.git
+cd llm-finetuning-studio
 python -m venv .venv
 source .venv/bin/activate
+pip install -r requirements.txt
+pip install -e .
 ```
 
-Windows:
+On Windows, activate the environment with:
 
 ```bash
 .venv\Scripts\activate
 ```
 
-### 2. Install dependencies
+Prepare the dataset:
 
 ```bash
-pip install -r requirements.txt
-pip install -e .
+python scripts/prepare_data.py --input data/raw/sample_instructions.jsonl --output-dir data/processed
 ```
 
-### 3. Prepare the dataset
-
-```bash
-python scripts/prepare_data.py \
-  --input data/raw/sample_instructions.jsonl \
-  --output-dir data/processed
-```
-
-### 4. Run the lightweight demo configuration
-
-This configuration uses a very small model and avoids 4-bit quantization. It is intended for code validation, not model quality.
+Run the lightweight validation workflow:
 
 ```bash
 python scripts/train.py --config configs/train_cpu_demo.yaml
 ```
 
-### 5. Run QLoRA fine-tuning on a CUDA GPU
+Run QLoRA on a CUDA GPU:
 
 ```bash
 python scripts/train.py --config configs/train_qlora.yaml
 ```
 
-The default QLoRA configuration uses:
+## Usage
 
-```text
-Qwen/Qwen2.5-1.5B-Instruct
-```
-
-You can replace it with another Hugging Face causal language model.
-
-### 6. Evaluate the adapter
-
-```bash
-python scripts/evaluate.py \
-  --base-model Qwen/Qwen2.5-1.5B-Instruct \
-  --adapter-path outputs/qwen-software-assistant \
-  --data-path data/processed/validation.jsonl \
-  --output-path outputs/evaluation_report.json
-```
-
-### 7. Run an interactive chat
-
-```bash
-python scripts/chat.py \
-  --base-model Qwen/Qwen2.5-1.5B-Instruct \
-  --adapter-path outputs/qwen-software-assistant
-```
-
-### 8. Start the API
+Start the API:
 
 ```bash
 export BASE_MODEL=Qwen/Qwen2.5-1.5B-Instruct
@@ -193,7 +127,7 @@ export ADAPTER_PATH=outputs/qwen-software-assistant
 uvicorn app.main:app --host 0.0.0.0 --port 8000
 ```
 
-Example request:
+Send a generation request:
 
 ```bash
 curl -X POST http://localhost:8000/generate \
@@ -206,110 +140,147 @@ curl -X POST http://localhost:8000/generate \
   }'
 ```
 
-## Configuration
+Interactive command-line chat:
 
-Training is controlled through YAML files.
+```bash
+python scripts/chat.py --base-model Qwen/Qwen2.5-1.5B-Instruct --adapter-path outputs/qwen-software-assistant
+```
 
-Important fields:
+## Screenshots
 
-| Field | Purpose |
-|---|---|
-| `model_name` | Hugging Face base model |
-| `train_file` | Processed training dataset |
-| `validation_file` | Processed validation dataset |
-| `use_4bit` | Enables QLoRA-style 4-bit loading |
-| `lora_r` | LoRA rank |
-| `lora_alpha` | LoRA scaling |
-| `target_modules` | Transformer modules adapted by LoRA |
-| `max_seq_length` | Maximum tokenized sequence length |
-| `learning_rate` | Optimizer learning rate |
-| `gradient_accumulation_steps` | Simulates a larger batch size |
-| `num_train_epochs` | Number of training passes |
-| `output_dir` | Adapter and checkpoint output location |
+### API Request and Response
 
-## Dataset Format
+![FastAPI generation example](docs/assets/api-example.svg)
 
-Each line in the source JSONL file must contain:
+### Terminal Workflow
+
+![Dataset preparation, tests, and API startup](docs/assets/terminal-example.svg)
+
+## Example Output
+
+The following is an illustrative API response format. Actual wording depends on the selected base model and trained adapter.
 
 ```json
 {
-  "instruction": "Explain a technical task.",
-  "context": "Optional supporting information.",
-  "response": "The desired model answer."
+  "text": "The function can raise ZeroDivisionError when b is zero. Validate b before division and return a clear error or raise ValueError.",
+  "base_model": "Qwen/Qwen2.5-1.5B-Instruct",
+  "adapter_path": "outputs/qwen-software-assistant"
 }
 ```
 
-## Fine-Tuning Strategy
+Example evaluation report:
 
-The project uses parameter-efficient fine-tuning instead of updating every model weight.
-
-### LoRA
-
-LoRA inserts small trainable matrices into selected transformer layers. This reduces GPU memory usage and makes checkpoints much smaller.
-
-### QLoRA
-
-QLoRA combines LoRA with a quantized 4-bit base model. The base weights remain frozen while LoRA adapters are trained.
-
-Typical advantages:
-
-- Lower memory use
-- Faster experiments
-- Smaller deployable adapter files
-- Ability to adapt larger models on limited hardware
-
-## Evaluation
-
-The evaluation script produces:
-
-- Average validation loss
-- Perplexity
-- Exact-match score
-- Token-overlap F1
-- Generated samples
-- Reference answers
-- Model configuration metadata
-
-These metrics are intentionally simple and transparent. A production system could add:
-
-- ROUGE or BERTScore
-- LLM-as-a-judge evaluation
-- Safety evaluation
-- Hallucination checks
-- Human preference studies
-- Domain-specific test suites
-- Latency and throughput benchmarks
-
-## Docker
-
-Build:
-
-```bash
-docker build -t llm-finetuning-studio .
+```json
+{
+  "number_of_examples": 50,
+  "average_exact_match": 0.0,
+  "average_token_f1": 0.0,
+  "examples": []
+}
 ```
 
-Run:
+The zero values above are placeholders that show the report schema, not claimed model results. Run the evaluation command to create measured results for your trained adapter.
 
-```bash
-docker run --rm -p 8000:8000 \
-  -e BASE_MODEL=Qwen/Qwen2.5-1.5B-Instruct \
-  -e ADAPTER_PATH=/models/adapter \
-  -v "$(pwd)/outputs/qwen-software-assistant:/models/adapter" \
-  llm-finetuning-studio
+## How It Works
+
+The system reads instruction-response examples from JSONL files, validates and removes duplicate records, and creates training and validation splits. A prompt builder converts each record into supervised fine-tuning text. TRL trains small LoRA adapter weights while the original language model remains frozen. With QLoRA, the base model is also loaded in 4-bit format to reduce GPU memory. The saved adapter is evaluated on held-out examples and loaded by FastAPI for REST-based inference.
+
+```text
+Instruction Data
+      ↓
+Validation and Deduplication
+      ↓
+Prompt Formatting
+      ↓
+LoRA or QLoRA Fine-Tuning
+      ↓
+Adapter Checkpoint
+      ↓
+Evaluation + FastAPI Inference
 ```
 
-## Testing
+## Evaluation and Results
+
+The evaluation pipeline currently measures:
+
+| Metric | Meaning |
+|---|---|
+| Exact Match | Percentage of predictions exactly matching the reference after normalization |
+| Token F1 | Word overlap between generated and reference answers |
+| Training Loss | Model error during supervised fine-tuning |
+| Validation Loss | Generalization error on held-out examples |
+| Perplexity | Exponential transformation of validation loss |
+| Latency | Can be measured around API generation for deployment testing |
+
+Run evaluation after training:
 
 ```bash
-pytest
+python scripts/evaluate.py \
+  --base-model Qwen/Qwen2.5-1.5B-Instruct \
+  --adapter-path outputs/qwen-software-assistant \
+  --data-path data/processed/validation.jsonl \
+  --output-path outputs/evaluation_report.json
 ```
 
+This repository does not claim benchmark results before a real training run. The generated JSON report records measured scores and prediction examples. For stronger evaluation, use a larger held-out dataset and add human review, LLM-as-a-judge scoring, safety tests, and latency benchmarks.
 
+## Challenges
 
-## Important Notes
+- Limited GPU memory when adapting larger language models
+- Selecting correct LoRA target modules for different architectures
+- Preventing overfitting on small instruction datasets
+- Measuring open-ended text quality with simple automatic metrics
+- Reducing hallucinations and unsafe recommendations
+- Balancing response quality, latency, and inference cost
+- Maintaining compatible versions across Transformers, TRL, PEFT, and bitsandbytes
 
-- QLoRA requires a compatible NVIDIA GPU and `bitsandbytes`.
-- The sample dataset is for demonstration only.
-- Always review model licenses before commercial use.
-- Never train on confidential or copyrighted data without permission.
-- Evaluate safety, bias, and hallucination risks before deployment.
+## Future Improvements
+
+- Add Direct Preference Optimization for preference alignment
+- Add synthetic instruction-data generation and filtering
+- Integrate MLflow or Weights & Biases experiment tracking
+- Add LLM-as-a-judge and human evaluation workflows
+- Serve models with vLLM for higher throughput
+- Add streaming token responses
+- Add safety guardrails and prompt-injection tests
+- Add Kubernetes deployment and GPU autoscaling
+- Add a web dashboard for training and evaluation results
+- Add model registry and automated adapter promotion
+
+## Demo
+
+A live demo is not included because model hosting requires GPU infrastructure. The repository includes two visual walkthroughs above. To record a 30-second demo, run the API, open `http://localhost:8000/docs`, submit a `/generate` request, and record the request and generated response.
+
+## Tests
+
+Run unit tests with coverage:
+
+```bash
+pytest --cov=src/llm_finetuning --cov-report=term-missing
+```
+
+The GitHub Actions workflow automatically:
+
+1. Installs the package
+2. Compiles source files
+3. Runs tests
+4. Reports code coverage in the CI logs
+
+## Project Status
+
+**Under Active Development, production-style portfolio project**
+
+The software structure follows production practices, but model quality and production readiness depend on the training dataset, selected model, GPU environment, evaluation results, security review, and deployment infrastructure.
+
+## License
+
+Copyright © 2026 Parisa Arbab. All rights reserved.
+
+This project is provided for educational and portfolio purposes. Copying, redistribution, modification, or commercial use requires prior written permission from the author. See [LICENSE](LICENSE).
+
+## Author
+
+**Parisa Arbab**
+
+- GitHub: [github.com/ParisaArbab](https://github.com/ParisaArbab)
+- LinkedIn: [linkedin.com/in/parisa-arbab](https://www.linkedin.com/in/parisa-arbab)
